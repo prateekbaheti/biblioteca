@@ -16,10 +16,20 @@ public class Biblioteca {
        Bangalorelibrary.allBooks[3]= new Book("A game of thrones");
        Bangalorelibrary.allBooks[4]= new Book("A clash of kings");
 
-       Customer []Bangalorelibrarycustomers = new Customer[3];
-       Bangalorelibrarycustomers[0]= new Customer("Hari",12);
-       Bangalorelibrarycustomers[1]= new Customer("Shyam",16);
-       Bangalorelibrarycustomers[2]= new Customer("John",32);
-
+       Customer presentUser = new Customer("Bruce",125);
+       Menu myMenu = new Menu(4);
+       myMenu.menuOptions[0]="1. View the list of books in the Library";
+       myMenu.menuOptions[1]="2. Reserve a book from the Library";
+       myMenu.menuOptions[2]="3. Check library number";
+       myMenu.menuOptions[3]="4. Exit the library system";
+       System.out.println("Welcome to the Bangalore public Library");
+       int option;
+       do{
+        option = myMenu.displayMenu();
+        if(option<1||option>myMenu.menuOptions.length)
+            System.out.println("Select a valid option");
+        myMenu.menuOptionSelected(option,Bangalorelibrary,presentUser);
+        System.out.println(" ");
+       }while(true);
     }
 }
