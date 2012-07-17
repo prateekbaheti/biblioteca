@@ -15,13 +15,14 @@ import static org.junit.Assert.assertEquals;
  * To change this template use File | Settings | File Templates.
  */
 public class LibraryTest {
+
     @Test
     public void testReserveBookFromCollection() throws Exception {                       // book not present in list;
-         Library books;
-         books = new Library(3);
-         books.allBooks[0]= new Book("abc");
-         books.allBooks[1] =new Book("fgh");
-         books.allBooks[2] =new Book("pqr");
+        Library books;
+        books = new Library(3);
+        books.allBooks.add(new Book("abc"));
+        books.allBooks.add(new Book("fgh"));
+        books.allBooks.add(new Book("pqr"));
 
         assertEquals(books.reserveBookFromCollection("xyz"),"Please select a book from the books list of the library");
     }
@@ -30,11 +31,11 @@ public class LibraryTest {
 
     @Test
     public void testReserveBookFromCollection2() throws Exception {                  //Book available in library
-         Library books = new Library(3);
-         books.allBooks[0]= new Book("abc");
-         books.allBooks[1] =new Book("fgh");
-         books.allBooks[2] =new Book("pqr");
-         assertEquals(books.reserveBookFromCollection("fgh"),"Thank You! Enjoy the book.");
+        Library books = new Library(3);
+        books.allBooks.add(new Book("abc"));
+        books.allBooks.add(new Book("fgh"));
+        books.allBooks.add(new Book("pqr"));
+        assertEquals(books.reserveBookFromCollection("fgh"),"Thank You! Enjoy the book.");
     }
 
 
@@ -43,10 +44,10 @@ public class LibraryTest {
     @Test                                                                             // Book unavailable in library
     public void testReserveBookFromCollection3() throws Exception {
         Library books = new Library(3);
-        books.allBooks[0]= new Book("abc");
-        books.allBooks[1] =new Book("fgh");
-        books.allBooks[2] =new Book("pqr");
-        books.allBooks[2].reserveBook();
+        books.allBooks.add(new Book("abc"));
+        books.allBooks.add(new Book("fgh"));
+        books.allBooks.add(new Book("pqr"));
+        books.allBooks.get(2).reserveBook();
         assertEquals(books.reserveBookFromCollection("pqr"),"Sorry we don't have that book yet.");
 
     }
@@ -54,9 +55,9 @@ public class LibraryTest {
     @Test
     public void testGetbooks() throws Exception {
         Library books = new Library(3);
-        books.allBooks[0]= new Book("abc");
-        books.allBooks[1] =new Book("fgh");
-        books.allBooks[2] =new Book("pqr");
+        books.allBooks.add(new Book("abc"));
+        books.allBooks.add(new Book("fgh"));
+        books.allBooks.add(new Book("pqr"));
         List<String> bookslist = new ArrayList<String>();
         bookslist.add("abc");
         bookslist.add("fgh");
@@ -65,6 +66,22 @@ public class LibraryTest {
 
     }
 
+    @Test
+    public void testAddBook() throws Exception {
+        Library books;
+        books = new Library(3);
+        books.allBooks.add(new Book("abc"));
+        books.allBooks.add(new Book("fgh"));
+        books.allBooks.add(new Book("pqr"));
+        List<String> bookslist = new ArrayList<String>();
+        bookslist.add("abc");
+        bookslist.add("fgh");
+        bookslist.add("pqr");
+        bookslist.add("lmn");
+        books.addBook("lmn");
+        assertEquals(bookslist,books.getBooks());
 
+
+    }
 
 }

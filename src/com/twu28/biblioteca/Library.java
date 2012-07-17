@@ -12,18 +12,19 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class Library {
-    Book[] allBooks;
+    List<Book> allBooks;
 
   Library(int numberOfBooks){
-       allBooks = new Book[numberOfBooks];
+       allBooks = new ArrayList<Book>(numberOfBooks);
+       }
 
-  }
+
 
   public List getBooks()
     {
-        List<String> booksList = new ArrayList<String>(allBooks.length);
-        for(int i =0; i< allBooks.length;i++)
-            booksList.add(allBooks[i].getname());
+        List<String> booksList = new ArrayList<String>(allBooks.size());
+        for(int i =0; i< allBooks.size();i++)
+            booksList.add((allBooks.get(i)).getname());
         return booksList;
     }
 
@@ -31,17 +32,20 @@ public class Library {
         boolean found = false;
 
         int i;
-        for (i = 0; i < allBooks.length; i++) {
-            if (bookName.equals(allBooks[i].name))
+        for (i = 0; i < allBooks.size(); i++) {
+            if ((allBooks.get(i)).name.equals(bookName))
                 found = true;
         }
         if (found == false)
             return "Please select a book from the books list of the library";
 
-        else
-            return allBooks[i-1].reserveBook();
+        else {
+            return (allBooks.get(i - 1)).reserveBook();
+        }
     }
 
 
-
+    public void addBook(String name) {
+        allBooks.add(new Book(name)) ;
+    }
 }
