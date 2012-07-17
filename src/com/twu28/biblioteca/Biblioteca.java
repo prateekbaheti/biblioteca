@@ -19,11 +19,12 @@ public class Biblioteca {
         Bangalorelibrary.addBook("A clash of kings");
 
         Customer presentUser = new Customer("Bruce",125);
-        Menu myMenu = new Menu(4);
+        Menu myMenu = new Menu(5);
         myMenu.menuOptions[0]="1. View the list of books in the Library";
         myMenu.menuOptions[1]="2. Reserve a book from the Library";
         myMenu.menuOptions[2]="3. Check library number";
-        myMenu.menuOptions[3]="4. Exit the library system";
+        myMenu.menuOptions[4]="5. Exit the library system";
+        myMenu.menuOptions[3]="4. View Movie List";
         System.out.println("Welcome to the Bangalore public Library");
         String option;
         int integerOption;

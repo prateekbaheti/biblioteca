@@ -29,7 +29,7 @@ public class Menu {
 
    }
 
-   public void menuOptionSelected(int selectedOption,Library collection, Customer user){
+   public void menuOptionSelected(int selectedOption,Library collection, Customer user, MovieList mList){
        Scanner inputoption = new Scanner(System.in);
        switch(selectedOption) {
           case 1 : System.out.println(" \n"+"  Books List");
@@ -45,10 +45,12 @@ public class Menu {
 
           case 3 :System.out.println("Your Library number is:" + user.libraryNumber);
                    break;
-          case 4: System.out.println("Please talk to Librarian. Thank you.");
+          case 5: System.out.println("Please talk to Librarian. Thank you.");
                    System.exit(0);
                    break;
-          default: System.out.println("Please select a valid menu option");
+          case 4: System.out.println("Movie List");
+                    mList.displayMovieList();
+           default: System.out.println("Please select a valid menu option");
                   break;
        }
    }
