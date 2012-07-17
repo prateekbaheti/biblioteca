@@ -1,5 +1,9 @@
 package com.twu28.biblioteca;
 
+import java.util.ArrayList;
+
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Prateek
@@ -7,20 +11,21 @@ package com.twu28.biblioteca;
  * Time: 1:37 AM
  * To change this template use File | Settings | File Templates.
  */
-public class LibraryCollection {
+public class Library {
     Book[] allBooks;
 
-  LibraryCollection(int numberOfBooks){
+  Library(int numberOfBooks){
        allBooks = new Book[numberOfBooks];
 
   }
 
-  public void showBooks()
-  {
-      System.out.println(" \n"+"  Books List");
-      for(int i =0; i< allBooks.length;i++)
-          allBooks[i].showBookDetails();
-  }
+  public List getBooks()
+    {
+        List<String> booksList = new ArrayList<String>(allBooks.length);
+        for(int i =0; i< allBooks.length;i++)
+            booksList.add(allBooks[i].getname());
+        return booksList;
+    }
 
     public String reserveBookFromCollection(String bookName) {
         boolean found = false;
@@ -36,4 +41,7 @@ public class LibraryCollection {
         else
             return allBooks[i-1].reserveBook();
     }
+
+
+
 }

@@ -1,5 +1,7 @@
 package com.twu28.biblioteca;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -17,23 +19,24 @@ public class Menu {
 
     }
 
-   public int displayMenu()
+   public void displayMenu()
    {
 
        for(int i=0;i<menuOptions.length;i++)
            System.out.println(menuOptions[i]);
 
        System.out.print("What would you like to do? Please enter menu option number:");
-       Scanner inputoption = new Scanner(System.in);
-       String stringOption = inputoption.nextLine();
-       int option =Integer.parseInt(stringOption);
-       return option;
+
    }
 
-   public void menuOptionSelected(int selectedOption,LibraryCollection collection, Customer user){
+   public void menuOptionSelected(int selectedOption,Library collection, Customer user){
        Scanner inputoption = new Scanner(System.in);
        switch(selectedOption) {
-          case 1 : collection.showBooks();
+          case 1 : System.out.println(" \n"+"  Books List");
+                   List<String> listOfNames;
+                   listOfNames = collection.getBooks();
+                   for(int i=0;i<listOfNames.size();i++)
+                       System.out.println(listOfNames.get(i));
                    break;
           case 2 : System.out.print("Please enter the book name you would like to reserve:");
                    String bookToReserve = inputoption.nextLine();
@@ -45,8 +48,22 @@ public class Menu {
           case 4: System.out.println("Please talk to Librarian. Thank you.");
                    System.exit(0);
                    break;
-          default: break;
+          default: System.out.println("Please select a valid menu option");
+                  break;
        }
    }
 
+    public int inputValidation(String option) {
+       int integerOption;
+       try{
+           integerOption= Integer.parseInt(option);
+       }
+       catch (NumberFormatException e){
+              return 0;
+       }
+       if (integerOption<1||integerOption>menuOptions.length)
+           return 0;
+
+        return integerOption;
+    }
 }

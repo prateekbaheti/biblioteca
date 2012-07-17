@@ -31,7 +31,8 @@ public class Book {
         return availability;
     }
 
-    public void showBookDetails() {
-        System.out.println(name);
+
+    public String getname() {
+        return name;
     }
 }
