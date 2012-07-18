@@ -43,13 +43,13 @@ public class Menu {
                    System.out.println(collection.reserveBookFromCollection(bookToReserve));
                    break;
 
-          case 3 :System.out.println("Your Library number is:" + user.libraryNumber);
+          case 3 :System.out.println("Your Library number is:" + user.userName);
                    break;
           case 5: System.out.println("Please talk to Librarian. Thank you.");
                    System.exit(0);
                    break;
           case 4: System.out.println("Movie List");
-                    mList.displayMovieList();
+
            default: System.out.println("Please select a valid menu option");
                   break;
        }

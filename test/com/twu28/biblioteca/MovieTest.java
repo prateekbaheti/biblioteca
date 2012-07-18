@@ -2,6 +2,9 @@ package com.twu28.biblioteca;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static junit.framework.Assert.assertEquals;
 
 /**
@@ -39,12 +42,11 @@ public class MovieTest {
     @Test
     public void testGetMovieDetails() throws Exception {
         Movie movie1 = new Movie("The dark knight","Christopher nolan",10);
-        String []details = new String[3];
-        details[0] = "The dark knight";
-        details[1] = "Christopher nolan";
-        details[2] = "10";
-        assertEquals((movie1.getMovieDetails())[0],details[0]);
-        assertEquals((movie1.getMovieDetails())[1],details[1]);
-        assertEquals((movie1.getMovieDetails())[2],details[2]);
+        List<String> details = new ArrayList<String>();
+        details.add("The dark knight");
+        details.add("Christopher nolan");
+        details.add("10");
+        assertEquals(movie1.getMovieDetails(),details);
+
     }
 }

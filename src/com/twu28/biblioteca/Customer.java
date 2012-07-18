@@ -8,16 +8,28 @@ package com.twu28.biblioteca;
  * To change this template use File | Settings | File Templates.
  */
 public class Customer {
-    String customerName;
-    int libraryNumber;
+    String userName;
+    String password;
 
-    Customer(String name, int libraryNo){
-        libraryNumber = libraryNo;
-        customerName =name;
+
+    Customer(String uName, String pass){
+        userName = uName;
+        password =pass;
 
     }
 
-    public int getLibraryNumber(){
-        return libraryNumber;
+    public String login(String uName,String pass){
+        if((userName==uName)&&(pass==password)){
+
+            return("Login successful");
+        }
+        else {
+            return "Invalid username or password";
+        }
+    }
+
+
+    public String getLibraryNumber(){
+        return userName;
     }
 }

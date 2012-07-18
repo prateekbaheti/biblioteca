@@ -1,5 +1,8 @@
 package com.twu28.biblioteca;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Prateek
@@ -33,14 +36,12 @@ public class Movie {
             return Integer.toString(rating);
     }
 
-    public String[] getMovieDetails() {
-        String []details = new String[3];
-        details[0]= name;
-        details[1] = director;
-        if (rating==0)
-            details[2]="N/A";
-        else
-            details[2] = Integer.toString(rating);
+    public List getMovieDetails() {
+        List<String> details = new ArrayList<String>();
+        details.add(name);
+        details.add(director);
+        details.add(getRating());
         return details;
+
     }
 }

@@ -21,9 +21,13 @@ public class MovieList {
         allMovies.add(new Movie(name,director,rating));
     }
 
-    public void displayMovieList(){
-       System.out.
-        }
 
+    public List getMovieList() {
+       List<List<String>> mList = new ArrayList<List<String>>();
+       for(int i=0;i<allMovies.size();i++)
+          mList.add((allMovies.get(i)).getMovieDetails());
+        return  mList;
     }
+
+
 }

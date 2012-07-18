@@ -12,17 +12,31 @@ import static junit.framework.Assert.assertEquals;
  * To change this template use File | Settings | File Templates.
  */
 public class CustomerTest {
-    @Test
-    public void testnewcustomer() throws Exception {
-        Customer user1= new Customer("Prateek",22);
-        assertEquals(user1.customerName,"Prateek");
-        assertEquals(user1.libraryNumber,22);
-    }
 
     @Test
     public void testGetLibraryNumber() throws Exception {
-        Customer user1 = new Customer("ravi",35);
-        assertEquals(user1.getLibraryNumber(),35);
+        Customer user1 = new Customer("111-1113","password");
+        assertEquals(user1.getLibraryNumber(),"111-1113");
 
+    }
+
+    @Test
+    public void testLogin() throws Exception {                          //Successful login
+        Customer user1 = new Customer("111-1113","password");
+        String login = user1.login("111-1113","password");
+        assertEquals("Login successful",login);
+    }
+
+    @Test
+    public void testLogin2() throws Exception {                          //unsuccessful login wrong username
+        Customer user1 = new Customer("11-1113","password");
+        String login = user1.login("111-1113","password");
+        assertEquals("Invalid username or password",login);
+    }
+    @Test
+    public void testLogin3() throws Exception {                          //unsuccessful login wrong password
+        Customer user1 = new Customer("111-1113","pasword");
+        String login = user1.login("111-1113","password");
+        assertEquals("Invalid username or password",login);
     }
 }
