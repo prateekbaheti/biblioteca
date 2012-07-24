@@ -1,5 +1,8 @@
 package com.twu28.biblioteca;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -29,43 +32,60 @@ public class Menu {
 
    }
 
-   public void menuOptionSelected(int selectedOption,Library collection, Customer user, MovieList mList){
+   public void menuOptionSelected(int selectedOption,Library collection, CustomerList cList, MovieList mList) throws IOException {
        Scanner inputoption = new Scanner(System.in);
        switch(selectedOption) {
-          case 1 : System.out.println(" \n"+"  Books List");
-                   List<String> listOfNames;
-                   listOfNames = collection.getBooks();
-                   for(int i=0;i<listOfNames.size();i++)
-                       System.out.println(listOfNames.get(i));
-                   break;
-          case 2 : System.out.print("Please enter the book name you would like to reserve:");
-                   String bookToReserve = inputoption.nextLine();
-                   System.out.println(collection.reserveBookFromCollection(bookToReserve));
-                   break;
+           case 1 : System.out.println(" \n"+"  Books List");
+               List<String> listOfNames;
+               listOfNames = collection.getBooks();
+               for(int i=0;i<listOfNames.size();i++)
+                   System.out.println(listOfNames.get(i));
+               break;
+           case 2 : System.out.print("Please enter the book name you would like to reserve:");
+               String bookToReserve = inputoption.nextLine();
+               System.out.println(collection.reserveBookFromCollection(bookToReserve));
+               break;
 
-          case 3 :System.out.println("Your Library number is:" + user.userName);
-                   break;
-          case 5: System.out.println("Please talk to Librarian. Thank you.");
-                   System.exit(0);
-                   break;
-          case 4: System.out.println("Movie List");
+           case 3 :System.out.println(cList.getLibraryNumber());
+               break;
+           case 7: System.out.println("Thank you.");
+               System.exit(0);
+               break;
+           case 4: System .out.println("Movie List");
+               List<List<String>> movList;
+               movList = mList.getMovieList();
+               System.out.println("[Movie    Director   Name]");
+               for(int j=0;j<mList.allMovies.size();j++)
+                   System.out.println(movList.get(j));
+               break;
+           case 5:System.out.print("Enter Username:");
+               BufferedReader reader;
+               reader = new BufferedReader(new InputStreamReader(System.in));
+               String username = reader.readLine();
+               System.out.print("Enter password:");
+               String password = reader.readLine();
+               String reply = cList.customerLogin(username,password);
+               System.out.println(reply);
+               break;
+           case 6:cList.logOut();
+               break;
 
            default: System.out.println("Please select a valid menu option");
-                  break;
+               break;
        }
    }
 
-    public int inputValidation(String option) {
+    public boolean inputValidation(String option) {
        int integerOption;
        try{
            integerOption= Integer.parseInt(option);
        }
        catch (NumberFormatException e){
-              return 0;
+              return false;
        }
        if (integerOption<1||integerOption>menuOptions.length)
-           return 0;
+           return false;
 
-        return integerOption;
+        return true;
     }
 }

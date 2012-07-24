@@ -14,11 +14,14 @@ import static org.junit.Assert.assertEquals;
  */
 public class CustomerListTest {
     @Test
-    public void testCustomerlogin() throws Exception {
+    public void testCustomerLoginSuccessful() throws Exception {
         CustomerList cList = new CustomerList();
-        cList.allCustomers.add(new Customer("111-1112","abcd"));
-        cList.allCustomers.add(new Customer("111-1113","pqrs"));
-        assertEquals("Login successful",cList.customerLogin("111-1113","pqrs"));
+        cList.allCustomers.add(new Customer("111-1112","batman"));
+        cList.allCustomers.add(new Customer("111-1113","raghav07"));
+        cList.allCustomers.add(new Customer("111-1114","caspiansea"));
+        cList.allCustomers.add(new Customer("111-1115","armstrong"));
+        cList.allCustomers.add(new Customer("111-1116","macbook"));
+        assertEquals("Login successful",cList.customerLogin("111-1112","batman"));
 
     }
 
@@ -56,7 +59,7 @@ public class CustomerListTest {
         cList.allCustomers.add(new Customer("111-1113","pqrs"));
         assertEquals("Please talk to the librarian",cList.getLibraryNumber());
     }
-
+    @Test
     public void testGetUserLibraryNo2() throws Exception {
         CustomerList cList = new CustomerList();
         cList.allCustomers.add(new Customer("111-1112","abcd"));
