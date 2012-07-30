@@ -19,7 +19,7 @@ public class Customer {
     }
 
     public String login(String uName,String pass){
-        if((userName==uName)&&(pass==password)){
+        if((userName.equals(uName))&&(pass.equals(password))){
 
             return("Login successful");
         }

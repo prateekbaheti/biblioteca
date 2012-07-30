@@ -30,7 +30,7 @@ public class CustomerList {
       int i;
         for(i =0;i<allCustomers.size();i++){
               name = (allCustomers.get(i)).userName;
-            if(user.equals(name)){
+            if(name.equals(user)){
               found = true;
               break;
             }

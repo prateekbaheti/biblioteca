@@ -58,14 +58,12 @@ public class Menu {
                for(int j=0;j<mList.allMovies.size();j++)
                    System.out.println(movList.get(j));
                break;
-           case 5:System.out.print("Enter Username:");
-               BufferedReader reader;
-               reader = new BufferedReader(new InputStreamReader(System.in));
-               String username = reader.readLine();
-               System.out.print("Enter password:");
-               String password = reader.readLine();
-               String reply = cList.customerLogin(username,password);
-               System.out.println(reply);
+           case 5:System.out.println("Enter Username:");
+               Scanner ip = new Scanner(System.in);
+               String username = ip.nextLine();
+               System.out.println("Enter password:");
+               String password = ip.nextLine();
+               System.out.println(cList.customerLogin(username,password));
                break;
            case 6:cList.logOut();
                break;
